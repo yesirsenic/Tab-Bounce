@@ -95,6 +95,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptablePacker", "Scripta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.PlasticSCM.Editor.Entities", "Unity.PlasticSCM.Editor.Entities.csproj", "{895531EC-5E07-7A86-8B1B-ACEACCE97B1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{4E769A54-1B6F-B8ED-3DD3-BB66F921F6B7}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Collections.Editor", "Unity.Collections.Editor.csproj", "{CED80A25-92CE-C719-BFA9-581F501D5C95}"
 EndProject
 Global
@@ -291,6 +293,10 @@ Global
 		{895531EC-5E07-7A86-8B1B-ACEACCE97B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{895531EC-5E07-7A86-8B1B-ACEACCE97B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{895531EC-5E07-7A86-8B1B-ACEACCE97B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E769A54-1B6F-B8ED-3DD3-BB66F921F6B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E769A54-1B6F-B8ED-3DD3-BB66F921F6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E769A54-1B6F-B8ED-3DD3-BB66F921F6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E769A54-1B6F-B8ED-3DD3-BB66F921F6B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CED80A25-92CE-C719-BFA9-581F501D5C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CED80A25-92CE-C719-BFA9-581F501D5C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CED80A25-92CE-C719-BFA9-581F501D5C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
