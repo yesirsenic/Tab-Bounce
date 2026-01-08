@@ -9,6 +9,8 @@ public class Meteor : MonoBehaviour
 
     Rigidbody2D rb;
 
+    [SerializeField] private GameObject explosionPrefab;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,5 +39,19 @@ public class Meteor : MonoBehaviour
         );
 
         rb.AddForce(force, ForceMode2D.Impulse);
+
+        GameManager.Instance.ScoreUp();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("GameOverZone"))
+        {
+            Vector3 hitPos = transform.position;
+
+            Instantiate(explosionPrefab, hitPos, Quaternion.identity);
+
+            Destroy(gameObject);
+        }
     }
 }

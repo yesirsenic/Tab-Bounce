@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2453642613482278596}
   - component: {fileID: 6569221134193198881}
   - component: {fileID: -7839703365349735623}
+  - component: {fileID: 435376561280122180}
   m_Layer: 0
   m_Name: Meteorite
   m_TagString: Untagged
@@ -272,7 +273,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -291,3 +292,16 @@ MonoBehaviour:
   bounceForceY: 12
   bounceForceX: 8
   maxX: 1.2
+  explosionPrefab: {fileID: 4049208617641578998, guid: d343119c74e35ed4d9360fbea071d962, type: 3}
+--- !u!114 &435376561280122180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8304755363803881657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1e76f206d314b4eafcd140afc9344f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeteorWallLimit

@@ -66,6 +66,9 @@ public class PaddleMove : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (!GameManager.Instance.isRunning)
+            return;
+
         if (!hasInput) return;
 
         rb.MovePosition(new Vector2(targetX, fixedY));

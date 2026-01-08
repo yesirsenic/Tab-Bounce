@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Paddle
+  - GameOverZone
   layers:
   - Default
   - TransparentFX
