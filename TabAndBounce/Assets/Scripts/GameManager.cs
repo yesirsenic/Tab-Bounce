@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
         CreditButton.SetActive(true);
         StartButton.SetActive(true);
         Score_Text.SetActive(false);
+        DifficultyManager.Instance.ResetDifficulty();
     }
 
     public void ScoreUp()

@@ -1,11 +1,20 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Meteor : MonoBehaviour
 {
-    public float bounceForceY = 5f;     
-    public float bounceForceX = 12f;      
-    public float maxX = 1.2f;
+    [Header("Base Bounce")]
+    public float baseBounceY = 12f;     // í•­ìƒ ë™ì¼í•œ ì í”„ ë†’ì´
+    public float baseBounceX = 6f;      // ê¸°ë³¸ ì¢Œìš° ì†ë„
+    public float paddleRange = 1.2f;    // íŒ¨ë“¤ ì¤‘ì‹¬ ì˜í–¥ ë²”ìœ„
+
+    [Header("Difficulty Scaling")]
+    public float xSpeedPerSecond = 0.4f;   // ì‹œê°„ë‹¹ X ì¦ê°€ëŸ‰
+    public float gravityPerSecond = 0.05f;  // ì‹œê°„ë‹¹ ì¤‘ë ¥ ì¦ê°€ëŸ‰
+    public float maxGravity = 3.0f;
+
+    [Header("Horizontal Control")]
+    public float minHorizontalForce = 0.3f;
 
     Rigidbody2D rb;
 
@@ -16,6 +25,14 @@ public class Meteor : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        float targetGravity =
+            1.8f + DifficultyManager.Instance.ElapsedTime * gravityPerSecond;
+
+        rb.gravityScale = Mathf.Min(targetGravity, maxGravity);
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Paddle"))
@@ -23,22 +40,28 @@ public class Meteor : MonoBehaviour
 
         Transform paddle = collision.transform;
 
-        // paddle Áß½É ±âÁØÀ¸·Î Ãæµ¹ À§Ä¡ °è»ê
+        // íŒ¨ë“¤ ì¤‘ì‹¬ ê¸°ì¤€ ì¶©ëŒ ìœ„ì¹˜
         float diffX = transform.position.x - paddle.position.x;
+        float normalizedX = Mathf.Clamp(diffX / paddleRange, -1f, 1f);
 
-        // -1 ~ 1 ¹üÀ§·Î Á¤±ÔÈ­
-        float normalizedX = Mathf.Clamp(diffX / maxX, -1f, 1f);
+        if (Mathf.Abs(normalizedX) < minHorizontalForce)
+        {
+            normalizedX = Random.value < 0.5f
+                ? -minHorizontalForce
+                : minHorizontalForce;
+        }
 
-        // ±âÁ¸ ¼Óµµ Á¦°Å
-        rb.linearVelocity = Vector2.zero;
+        normalizedX = Mathf.Clamp(normalizedX, -1f, 1f);
 
-        // »õ ¼Óµµ ºÎ¿© 
-        Vector2 force = new Vector2(
-            normalizedX * bounceForceX,
-            bounceForceY
+        //ì‹œê°„ ê¸°ë°˜ ë‚œì´ë„ (ì¢Œìš° ì†ë„ë§Œ ì¦ê°€)
+        float difficultyX =
+            baseBounceX + DifficultyManager.Instance.ElapsedTime * xSpeedPerSecond;
+
+        //velocity ì§ì ‘ ì§€ì • 
+        rb.linearVelocity = new Vector2(
+            normalizedX * difficultyX,
+            baseBounceY
         );
-
-        rb.AddForce(force, ForceMode2D.Impulse);
 
         GameManager.Instance.ScoreUp();
     }
