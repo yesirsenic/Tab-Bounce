@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject StartButton;
     [SerializeField] private GameObject Score_Text;
     [SerializeField] private Text bestScore_Text;
+    [SerializeField] private GameObject Noads;
 
     private Camera cam;
     private int score;
@@ -31,6 +32,12 @@ public class GameManager : MonoBehaviour
         score = 0;
         bestScore = PlayerPrefs.GetInt("BestScore");
         bestScore_Text.text = bestScore.ToString();
+        
+    }
+
+    private void Start()
+    {
+        NoAdPurchasedSetting();
     }
 
     private void Update()
@@ -59,13 +66,15 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("BestScore", score);
         }
 
+        AdsManager.Instance.OnPlayerDied();
+
         __Init__();
     }
 
     public void __Init__()
     {
         isRunning = false;
-        NOADButton.SetActive(true);
+        NOADButtonActive();
         CreditButton.SetActive(true);
         StartButton.SetActive(true);
         Score_Text.SetActive(false);
@@ -75,6 +84,29 @@ public class GameManager : MonoBehaviour
     {
         score++;
         Score_Text.GetComponent<Text>().text = score.ToString();
+    }
+
+    public void NoAdPurchased()
+    {
+        NOADButton.SetActive(false);
+        Noads.SetActive(false);
+    }
+
+    void NoAdPurchasedSetting()
+    {
+        if(NoAdsManager.Instance.HasNoAds)
+        {
+            NOADButton.SetActive(false);
+            Noads.SetActive(false);
+        }
+    }
+
+    void NOADButtonActive()
+    {
+        if(!NoAdsManager.Instance.HasNoAds)
+        {
+            NOADButton.SetActive(true);
+        }
     }
 
     void SpawnStartMeteor()
