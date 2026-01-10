@@ -9,9 +9,9 @@ public class Meteor : MonoBehaviour
     public float paddleRange = 1.2f;    // 패들 중심 영향 범위
 
     [Header("Difficulty Scaling")]
-    public float xSpeedPerSecond = 0.4f;   // 시간당 X 증가량
-    public float gravityPerSecond = 0.05f;  // 시간당 중력 증가량
-    public float maxGravity = 3.0f;
+    public float xSpeedPerSecond = 0.6f;   // 시간당 X 증가량
+    public float gravityPerSecond = 0.075f;  // 시간당 중력 증가량
+    public float maxGravity = 4.5f;
 
     [Header("Horizontal Control")]
     public float minHorizontalForce = 0.3f;
@@ -64,6 +64,7 @@ public class Meteor : MonoBehaviour
         );
 
         GameManager.Instance.ScoreUp();
+        SoundManager.Instance.Play(SFXType.Blocking);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,6 +74,8 @@ public class Meteor : MonoBehaviour
             Vector3 hitPos = transform.position;
 
             Instantiate(explosionPrefab, hitPos, Quaternion.identity);
+
+            SoundManager.Instance.Play(SFXType.Explosion);
 
             Destroy(gameObject);
         }

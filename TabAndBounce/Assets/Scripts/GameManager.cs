@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject NOADButton;
-    [SerializeField] private GameObject CreditButton;
     [SerializeField] private GameObject StartButton;
     [SerializeField] private GameObject Score_Text;
     [SerializeField] private Text bestScore_Text;
@@ -32,7 +31,11 @@ public class GameManager : MonoBehaviour
         score = 0;
         bestScore = PlayerPrefs.GetInt("BestScore");
         bestScore_Text.text = bestScore.ToString();
-        
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+        Time.fixedDeltaTime = 1f / 60f;
+        Application.runInBackground = false;
+
     }
 
     private void Start()
@@ -50,9 +53,9 @@ public class GameManager : MonoBehaviour
         SpawnStartMeteor();
         isRunning = true;
         NOADButton.SetActive(false);
-        CreditButton.SetActive(false);
         StartButton.SetActive(false);
         Score_Text.SetActive(true);
+        Score_Text.GetComponent<Text>().text = "0";
         score = 0;
         
     }
@@ -75,7 +78,6 @@ public class GameManager : MonoBehaviour
     {
         isRunning = false;
         NOADButtonActive();
-        CreditButton.SetActive(true);
         StartButton.SetActive(true);
         Score_Text.SetActive(false);
         DifficultyManager.Instance.ResetDifficulty();
@@ -126,5 +128,7 @@ public class GameManager : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(startMeteorSpeedX, startMeteorSpeedY);
         }
+
+        SoundManager.Instance.Play(SFXType.Falling);
     }
 }

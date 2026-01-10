@@ -1,0 +1,12 @@
+# ninja log v5
+40	270	7897380858322464	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	1155662d7b8985eb
+345	715	7897380861597512	D:/Github/Tab-Bounce/TabAndBounce/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/282z3r43/obj/arm64-v8a/libswappywrapper.so	84a592cb6ad2aaf6
+0	1741	7897380873002880	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	93400a0b8b12c9bc
+19	1749	7897380873159070	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	b2cf02871d0f4ba9
+35	1764	7897380873259565	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	3893c91ca8d3d41c
+24	1766	7897380873299792	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	b990a97164cf2ffb
+29	1824	7897380873897287	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	a7915e028150aea5
+9	1839	7897380874048145	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	b75dcd5ee211a1c
+14	1939	7897380875059561	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	915829281350ff17
+5	2018	7897380875844577	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	3b5ab95fdb8a4ac5
+2018	2122	7897380876894930	D:/Github/Tab-Bounce/TabAndBounce/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/282z3r43/obj/arm64-v8a/libgame.so	20eb4b87ed7d3b0

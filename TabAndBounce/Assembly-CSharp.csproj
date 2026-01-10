@@ -63,11 +63,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ExplosionController.cs" />
     <Compile Include="Assets\Scripts\GameOverZone.cs" />
+    <Compile Include="Assets\Scripts\SFXType.cs" />
     <Compile Include="Assets\Scripts\AdsManager.cs" />
     <Compile Include="Assets\Scripts\NoAdsManager.cs" />
     <Compile Include="Assets\Scripts\DifficultyManager.cs" />
     <Compile Include="Assets\Scripts\IAPManager.cs" />
     <Compile Include="Assets\Scripts\Meteor.cs" />
+    <Compile Include="Assets\Scripts\ButtonManager.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\MeteorWallLimit.cs" />
     <Compile Include="Assets\Scripts\PaddleMove.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />

@@ -32,9 +32,11 @@ public class PaddleMove : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.isRunning)
+            return;
+
         float? screenX = null;
 
-        
         if (Touchscreen.current != null &&
             Touchscreen.current.primaryTouch.press.isPressed)
         {
@@ -42,36 +44,22 @@ public class PaddleMove : MonoBehaviour
         }
 
 #if UNITY_EDITOR
-        
         if (Mouse.current != null && Mouse.current.leftButton.isPressed)
         {
             screenX = Mouse.current.position.ReadValue().x;
         }
 #endif
 
-        if (screenX.HasValue)
-        {
-            float depth = cam.WorldToScreenPoint(transform.position).z;
-            Vector3 worldPos = cam.ScreenToWorldPoint(
-                new Vector3(screenX.Value, 0f, depth)
-            );
-
-            targetX = Mathf.Clamp(worldPos.x, minX, maxX);
-            hasInput = true;
-        }
-        else
-        {
-            hasInput = false;
-        }
-    }
-    void FixedUpdate()
-    {
-        if (!GameManager.Instance.isRunning)
+        if (!screenX.HasValue)
             return;
 
-        if (!hasInput) return;
+        float depth = cam.WorldToScreenPoint(transform.position).z;
+        Vector3 worldPos = cam.ScreenToWorldPoint(
+            new Vector3(screenX.Value, 0f, depth)
+        );
 
-        rb.MovePosition(new Vector2(targetX, fixedY));
+        float x = Mathf.Clamp(worldPos.x, minX, maxX);
+        transform.position = new Vector2(x, fixedY);
     }
 
 
